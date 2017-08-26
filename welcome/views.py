@@ -11,7 +11,7 @@ from .models import PageView
 def index(request):
     hostname = os.getenv('HOSTNAME', 'unknown')
     PageView.objects.create(hostname=hostname)
-    os.system("touch pippopluto3")
+    os.system("touch pippopluto4")
 
     return render(request, 'welcome/index.html', {
         'hostname': hostname,
