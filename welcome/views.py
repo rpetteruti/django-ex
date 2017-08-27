@@ -12,7 +12,7 @@ from .models import PageView
 def index(request):
     hostname = os.getenv('HOSTNAME', 'unknown')
     PageView.objects.create(hostname=hostname)
-    os.system("touch pippopluto3")
+
 
     return render(request, 'welcome/index.html', {
         'hostname': hostname,
@@ -28,6 +28,8 @@ def simple_upload(request):
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
+        print (filename)
+        os.system("/darknet/darknet-master/darknet detect /darknet/darknet-master/cfg/tiny-yolo.cfg /darknet/darknet-master/tiny-yolo.weights /opt/app-root/src/"+filename)
         uploaded_file_url = fs.url(filename)
         return render(request, 'welcome/simple_upload.html', {
             'uploaded_file_url': uploaded_file_url
