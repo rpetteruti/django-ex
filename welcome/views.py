@@ -30,7 +30,7 @@ def simple_upload(request):
         filename = fs.save(myfile.name, myfile)
         print (filename)
         os.chdir("/darknet/darknet-master/")
-        os.system("/darknet/darknet-master/darknet detect /darknet/darknet-master/cfg/tiny-yolo.cfg /darknet/darknet-master/tiny-yolo.weights /opt/app-root/src/"+filename)
+        os.system("/darknet/darknet-master/darknet detect /darknet/darknet-master/cfg/yolo.cfg /darknet/darknet-master/yolo.weights /opt/app-root/src/"+filename)
         uploaded_file_url = fs.url(filename)
         return render(request, 'welcome/simple_upload.html', {
             'uploaded_file_url': uploaded_file_url
