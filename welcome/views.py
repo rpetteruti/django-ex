@@ -40,7 +40,6 @@ def simple_upload(request):
         output_command = os.popen("python examples/folderDetector.py /opt/app-root/src/frames/").read()
         #os.system("python examples/folderDetector.py /opt/app-root/src/frames/")
 
-
         print("Command: "+output_command)
         uploaded_file_url = fs.url(filename)
         return render(request, 'welcome/simple_upload.html', {
